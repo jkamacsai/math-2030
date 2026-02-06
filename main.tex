@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Project Proposal : Modeling Real Travel Routes Using Shortest-Path Algorithms}
+\author{Jennifer M.}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Motivation}
+Shortest-path algorithms are a tool in graph theory and are widely used in real-world applications such as GPS navigation systems, transportation planning, and logistics optimization. Algorithms such as Dijkstra’s algorithm are used to compute the optimal path between two points in a weighted graph, where edge weights typically represent distance, travel time, or cost. These algorithms rely on simplifying assumptions that may limit how accurately they model real travel behavior. The purpose of this project is to see how classical shortest-path algorithms model real transportation networks and to find the extent to which their assumptions align with real travel conditions. This project will explore the difference between static shortest-path models, where edge weights are fixed, and more realistic models where travel times vary due to factors such as traffic or time of day. 
+
+\section{Research Question}
+
+How well do shortest-path algorithms model real travel routes, and what assumptions limit their real use in transportation networks? 
+
+\section{Methodology}
+
+This project will combine some theoretical discussion with a small computational example. It will first introduce the basic ideas of graphs, including nodes, edges, and weighted networks, and explain how classical shortest-path algorithms, such as Dijkstra’s algorithm, work. The project will then discuss the main assumptions behind these algorithms, including the use of fixed edge weights and the idea that the best route is the one with the shortest distance or travel time. From a practical point of view, the project will look at how real transportation networks differ from these simplified models and briefly discuss extensions such as time-dependent shortest-path models, where travel times change over time. A simple Python implementation may be used to show how the project may compare routes in a small network using fixed edge weights versus time-dependent weights that change to simulate traffic congestion. Overall, the focus will be on understanding and interpreting the models rather than on complex algorithms or large-scale computation.
+
+\section{Expected Outcomes}
+
+The project is expected to show that while shortest-path algorithms provide an effective mathematical framework for modeling travel routes, their practical accuracy depends heavily on how edge weights are defined. Classical static models work well in simplified settings but may fail to capture real-world phenomena such as congestion, delays, or route preferences. The goal is to highlight how time-dependent or dynamic models can partially address these limitations, while still relying on the same graph-theoretic foundations. 
+
+\section{Purpose and Significances}
+
+This project demonstrates how abstract concepts from discrete mathematics and graph theory are applied in real-world settings. By evaluating the assumptions behind shortest-path algorithms, it will emphasizes the importance of mathematical modeling choices and illustrates the trade-off between mathematical simplicity and realism which aligns with the broader goals of applied mathematics and computational modeling. 
+
+\section{Link to Repository}
+
+https://github.com/jkamacsai/math-2030.git 
+
+\end{document}
