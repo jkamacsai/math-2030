@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 
-\title{Project Proposal : Modeling Real Travel Routes Using Shortest-Path Algorithms}
+\title{Modeling Real Travel Routes Using Shortest-Path Algorithms}
 \author{Jennifer M.}
 \date{February 2026}
 
@@ -9,27 +9,32 @@
 
 \maketitle
 
-\section{Motivation}
-Shortest-path algorithms are a tool in graph theory and are widely used in real-world applications such as GPS navigation systems, transportation planning, and logistics optimization. Algorithms such as Dijkstra’s algorithm are used to compute the optimal path between two points in a weighted graph, where edge weights typically represent distance, travel time, or cost. These algorithms rely on simplifying assumptions that may limit how accurately they model real travel behavior. The purpose of this project is to see how classical shortest-path algorithms model real transportation networks and to find the extent to which their assumptions align with real travel conditions. This project will explore the difference between static shortest-path models, where edge weights are fixed, and more realistic models where travel times vary due to factors such as traffic or time of day. 
+\section{Abstract}
+Shortest-path algorithms are a fundamental topic in graph theory and are widely used to model routing problems in transportation networks. In these models, road systems are represented as weighted graphs, and routes are chosen to minimize quantities such as distance or travel time. While these algorithms are efficient and mathematically understood, the usefulness depends on how well their assumptions reflect real travel conditions. This paper examines how classical shortest-path algorithms are applied to transportation networks and discusses the limitations of these models, specifically the assumption that travel costs are fixed.  
 
-\section{Research Question}
+\section{Introduction}
+Graphs provide a natural way to represent networks, including transportation systems. Locations such as intersections can be modeled as vertices, while roads connecting them are represented as edges. By assigning weights to edges, additional information such as distance or expected travel time can be incorporated. 
 
-How well do shortest-path algorithms model real travel routes, and what assumptions limit their real use in transportation networks? 
+One of the most important problems in graph theory is the shortest-path problem, which involves finding the minimum-cost path between two vertices. Classic algorithms for solving this problem, such as Dijkstra’s algorithm, are well known and widely taught in discrete mathematics and computer science courses \cite{cormen_leiserson_rivest_stein_2022} \cite{tardos_2006}. 
 
-\section{Methodology}
+Although shortest-path algorithms are frequently used in routing applications, they rely on simplifying assumptions that may not hold in real transportation networks. Travel times on roads often vary due to congestion, traffic signals, or time-of-day effects. As a result, routes computed using fixed edge weights may not accurately reflect real travel behavior. This paper explores how shortest-path algorithms are used to model travel routes and examines the limitations of these models when applied to real-world transportation systems. 
 
-This project will combine some theoretical discussion with a small computational example. It will first introduce the basic ideas of graphs, including nodes, edges, and weighted networks, and explain how classical shortest-path algorithms, such as Dijkstra’s algorithm, work. The project will then discuss the main assumptions behind these algorithms, including the use of fixed edge weights and the idea that the best route is the one with the shortest distance or travel time. From a practical point of view, the project will look at how real transportation networks differ from these simplified models and briefly discuss extensions such as time-dependent shortest-path models, where travel times change over time. A simple Python implementation may be used to show how the project may compare routes in a small network using fixed edge weights versus time-dependent weights that change to simulate traffic congestion. Overall, the focus will be on understanding and interpreting the models rather than on complex algorithms or large-scale computation.
+\section{Mathematical Background}
+A graph is defined as an ordered pair G=(V,E), where V is a set of vertices and E is a set of edges connecting pairs of vertices. In a weighted graph, each edge e exists in E is assigned a real-valued weight w(e), representing the cost of traversing that edge. 
 
-\section{Expected Outcomes}
+In transportation models, vertices often correspond to physical locations, while edges represent direct travel connections such as roads. The weight of an edge may represent distance, average travel time, or another measure of cost. 
 
-The project is expected to show that while shortest-path algorithms provide an effective mathematical framework for modeling travel routes, their practical accuracy depends heavily on how edge weights are defined. Classical static models work well in simplified settings but may fail to capture real-world phenomena such as congestion, delays, or route preferences. The goal is to highlight how time-dependent or dynamic models can partially address these limitations, while still relying on the same graph-theoretic foundations. 
+The shortest-path problem consists of finding a path between two vertices that minimizes the sum of the weights along that path. Dijkstra’s algorithm is a standard method for solving this problem in graphs with nonnegative edge weights \cite{dijkstra_1959}. The algorithm assumes that all edge weights are fixed and known in advance, and under these conditions it is guaranteed to find an optimal path. 
 
-\section{Purpose and Significances}
+\section{Shortest Path Algorithms in Transportation Modeling}
 
-This project demonstrates how abstract concepts from discrete mathematics and graph theory are applied in real-world settings. By evaluating the assumptions behind shortest-path algorithms, it will emphasizes the importance of mathematical modeling choices and illustrates the trade-off between mathematical simplicity and realism which aligns with the broader goals of applied mathematics and computational modeling. 
+Shortest-path algorithms are commonly used in routing and navigation systems. In these applications, transportation networks are modeled as graphs, and routes are selected based on criteria such as minimizing distance or travel time \cite{cormen_leiserson_rivest_stein_2022}. 
 
-\section{Link to Repository}
+In practice, edge weights are often estimated using average or typical travel conditions. This approach can produce reasonable routes when traffic patterns are stable or when exact accuracy is not required. For example, in areas with low congestion or during off-peak hours, static shortest-path models may closely approximate actual travel times. 
 
-https://github.com/jkamacsai/math-2030.git 
+However, this modeling approach simplifies the complexity of real transportation systems. Travel conditions can change significantly due to congestion, accidents, or traffic controls, which are not captured by fixed edge weights. As a result, shortest-path algorithms may produce routes that are optimal according to the model but suboptimal in practice. 
+
+\bibliographystyle{plain} 
+\bibliography{ref} 
 
 \end{document}
