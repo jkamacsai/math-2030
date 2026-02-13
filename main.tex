@@ -1,5 +1,6 @@
 \documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\usepackage{graphicx} 
+\usepackage{listings} 
 
 \title{Modeling Real Travel Routes Using Shortest-Path Algorithms}
 \author{Jennifer M.}
@@ -34,7 +35,86 @@ In practice, edge weights are often estimated using average or typical travel co
 
 However, this modeling approach simplifies the complexity of real transportation systems. Travel conditions can change significantly due to congestion, accidents, or traffic controls, which are not captured by fixed edge weights. As a result, shortest-path algorithms may produce routes that are optimal according to the model but suboptimal in practice. 
 
+\section{Limitations of Classical Shortest-Path Models}
+
+A major limitation of classical shortest-path models is the assumption that edge weights remain constant. In real transportation networks, travel times often vary depending on the time of day or current traffic conditions. A route that minimizes travel time under one set of conditions may no longer be optimal when conditions change. 
+
+Another limitation is that shortest-path algorithms typically optimize a single criterion, such as distance or time. Real travelers may consider additional factors, including route familiarity, toll costs, or personal preferences. These factors are difficult to represent within a simple weighted graph model. 
+
+Furthermore, classical models assume complete and accurate information about the network. Routing decisions are often made using estimates or predictions, which introduces uncertainty into the model. 
+
+\section{Time-Dependent Modeling}
+
+One way to address the limitations of static shortest-path models is to allow edge weights to vary over time. In such time-dependent models, the cost of traversing an edge depends on factors such as the time of day or current traffic conditions. This allows predictable changes, such as rush-hour congestion, to be incorporated into routing decisions. 
+
+While time-dependent models can better reflect real travel conditions, they are more complex than static models and may require additional assumptions to ensure that shortest paths are well defined \cite{dean}. As a result, these models are often used selectively, depending on the level of accuracy required.
+
+Refer to Appendix~\ref{app:python-code}. This example shows that shortest-path algorithms select routes based on the total weight of the edges. When travel times are increased to represent congestion, the selected route changes. This highlights how strongly routing decisions depend on the assumptions used to define edge weights. 
+
+\section{Conclusion}
+
+Shortest-path algorithms offer a clear and effective mathematical framework for modeling routing problems in transportation networks. Their simplicity and efficiency make them useful in many practical applications. However, their accuracy depends strongly on the assumptions used to represent travel costs. 
+
+Classical shortest-path models with fixed edge weights provide a useful starting point but may fail to capture important features of real travel behavior. Allowing travel costs to change over time can improve realism, but this comes at the cost of increased complexity. This illustrates the trade-off between mathematical simplicity and realism that arises when applying abstract mathematical models to real-world systems. 
+
 \bibliographystyle{plain} 
 \bibliography{ref} 
+
+
+
+\appendix
+\section{Python Code for Shortest-Path Simulation}
+\label{app:python-code} 
+
+\begin{lstlisting}[caption={Python code for modeling real travel routes using shortest-path logic}]
+# Code for Math 2030 Module Two Paper on Modeling Real Travel
+# Routes Using Shortest-Path Algorithms
+
+# Define a simple road network dictionary
+# Each location maps to its neighbors with travel times
+
+graph = {
+    "A": {"B": 5, "C": 12},
+    "B": {"A": 5, "C": 4},
+    "C": {"A": 12, "B": 4}
+}
+
+# Travel times with possible routes
+route_1 = ["A", "B", "C"]
+route_2 = ["A", "C"]
+
+time_1 = graph["A"]["B"] + graph["B"]["C"]
+time_2 = graph["A"]["C"]
+
+# Comparison of routes
+if time_1 < time_2:
+    shortest_path = route_1
+    shortest_time = time_1
+else:
+    shortest_path = route_2
+    shortest_time = time_2
+
+print("Shortest Route:", shortest_path)
+print("Total Travel Time:", shortest_time)
+
+# Create a simulation of congestion that increases travel time
+graph["B"]["C"] = 15
+
+# Recalculate route times
+time_1 = graph["A"]["B"] + graph["B"]["C"]
+time_2 = graph["A"]["C"]
+
+# Compare routes again
+if time_1 < time_2:
+    shortest_path = route_1
+    shortest_time = time_1
+else:
+    shortest_path = route_2
+    shortest_time = time_2
+
+print("Shortest Route with Congestion:", shortest_path)
+print("Total Travel Time with Congestion:", shortest_time)
+\end{lstlisting}
+
 
 \end{document}
